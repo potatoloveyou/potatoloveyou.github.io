@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <style>
+        .wrap {
+            display: flex;
+        }
+
+        .left li {
+            margin-right: 10px;
+        }
+
+        .left li a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .left li.clicked {
+            background-color: red;
+        }
+
+        .wrap .content {
+            width: 200px;
+            height: 130px;
+            font-size: 0;
+            position: relative;
+        }
+
+        img {
+            width: 200px;
+            height: 130px;
+        }
+
+        .wrap .content div {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .wrap .content div:nth-of-type(1) {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="left">
+            <li class="clicked"><a href="JavaScript:;">选项一</a></li>
+            <li><a href="JavaScript:;">选项二</a></li>
+            <li><a href="JavaScript:;">选项三</a></li>
+            <li><a href="JavaScript:;">选项四</a></li>
+        </ul>
+        <div class="content">
+            <div><a href="JavaScript:;"><img src="./img/1.jpg"></a></div>
+            <div><a href="JavaScript:;"><img src="./img/2.jpg"></a></div>
+            <div><a href="JavaScript:;"><img src="./img/3.jpg"></a></div>
+            <div><a href="JavaScript:;"><img src="./img/4.jpg"></a></div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('.left li').click(function () {
+
+                $(this).addClass('clicked').siblings().removeClass('clicked');
+                // console.log('111');
+                var index = $(this).index();
+                // console.log(index);
+                // $('.content div').eq(index).show();
+                // $('.content div').eq(index).siblings().hide();
+
+                $('.content div').eq(index).fadeIn(1000).siblings().hide();
+            })
+        })
+    </script>
+</body>
+
+</html>

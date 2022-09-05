@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-size: 0;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        .wrap .small {
+            width: 225px;
+            height: 150px;
+            position: relative;
+        }
+
+        .wrap .small img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap .small .zhezhao {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 33.33%;
+            height: 33.33%;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* pointer-events: none; */
+        }
+
+        .wrap .big {
+            position: absolute;
+            top: 0;
+            left: 245px;
+            width: 225px;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .wrap .big img {
+            width: 300%;
+            height: 300%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="small">
+            <img src="./1.jpg">
+            <div class="zhezhao"></div>
+        </div>
+        <div class="big">
+            <img src="./1.jpg">
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $(".small").mousemove(function(){
+                
+            })
+        })
+    </script>
+</body>
+
+</html>
