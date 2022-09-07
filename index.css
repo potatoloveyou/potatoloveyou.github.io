@@ -1,0 +1,186 @@
+.self-introduction {
+  background-image: linear-gradient(45deg, lavender, lightblue);
+}
+.self-introduction .container .row {
+  align-items: center;
+}
+.self-introduction .container .row .lh-information h2 {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 55px;
+  color: #3f396d;
+  margin-bottom: 0.5rem;
+}
+.self-introduction .container .row .lh-information h1 {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 55px;
+  color: #6f34fe;
+  letter-spacing: 5px;
+  margin-bottom: 0.5rem;
+}
+.self-introduction .container .row .lh-information p {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 35px;
+  color: #7d7789;
+  margin-bottom: 50px;
+}
+.self-introduction .container .row .lh-information .hire {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  padding: 20px 60px;
+  background-color: #fca61f;
+  color: #fff;
+  border-radius: 35px;
+  margin: 0 20px;
+}
+.self-introduction .container .row .lh-information .understand {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #6f34fe;
+  margin: 0 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #6f34fe;
+  position: relative;
+}
+.self-introduction .container .row .lh-information .understand::after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  background-color: #fca61f;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+.self-introduction .container .row .lh-photo img {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+}
+.skill {
+  background-color: lightblue;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skill .container .row {
+  justify-content: space-around;
+  position: relative;
+}
+.skill .container .row a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #6f34fe;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+}
+.skill .container .row a:hover {
+  background-color: #fca61f;
+}
+.skill .container .row a:nth-child(1) {
+  color: #fff;
+  background-color: #e44f26;
+}
+.skill .container .row a:nth-child(2) {
+  color: blue;
+}
+.skill .container .row a:nth-child(3) {
+  color: blue;
+}
+.skill .container .row a:nth-child(4) {
+  color: blue;
+}
+.skill .container .row a:nth-child(5) {
+  color: blue;
+}
+.html5 {
+  background-color: lightcoral;
+  padding: 50px 0;
+}
+.html5 .container .row {
+  justify-content: center;
+}
+.html5 .container .row a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+.html5 .container .row a h5 {
+  font-size: 50px;
+}
+.html5 .container .row a img {
+  width: 200px;
+  height: 200px;
+}
+.css3 {
+  background-color: lightblue;
+  padding: 50px 0;
+}
+.css3 .container .row {
+  justify-content: center;
+}
+.css3 .container .row a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+.css3 .container .row a h5 {
+  font-size: 50px;
+}
+.css3 .container .row a img {
+  width: 200px;
+  height: 200px;
+}
+.javascript {
+  background-color: lightgreen;
+  padding: 50px 0;
+}
+.javascript .container .row {
+  justify-content: center;
+}
+.javascript .container .row a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+.javascript .container .row a h5 {
+  font-size: 50px;
+}
+.javascript .container .row a img {
+  width: 200px;
+  height: 200px;
+}
+.ajax {
+  background-color: lightpink;
+  padding: 50px 0;
+}
+.ajax .container .row {
+  justify-content: center;
+}
+.ajax .container .row a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+.ajax .container .row a h5 {
+  font-size: 50px;
+}
+.ajax .container .row a img {
+  width: 200px;
+  height: 200px;
+}
+/*# sourceMappingURL=./index.css.map */
