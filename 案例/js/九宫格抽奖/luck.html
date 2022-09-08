@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾讯式抽奖</title>
+    <link rel="stylesheet" href="./my-minireset.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+        * {
+            user-select: none;  
+        }
+        .center {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .display {
+            width: 300px;
+            box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .display span {
+            line-height: 2em;
+            text-align: center;
+            display: block;
+            font-size: 20px;
+        }
+
+        ul.luck {
+            width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        ul.luck li {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 1.5em;
+        }
+
+        .luck li:nth-child(1) {
+            background-color: black;
+        }
+
+        .luck li:nth-child(5) {
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center">
+        <div class="display">
+            <span>腾讯式抽奖~</span>
+        </div>
+        <ul class="luck"></ul>
+    </div>
+
+
+
+    <script>
+
+        var display=document.querySelector('.display span');
+        var luck = document.querySelector('.luck');
+        var icons = [
+            '手机',
+            '平板',
+            '电磁炉',
+            '电视',
+            '开始',
+            '洗衣机',
+            '电脑',
+            '冰箱',
+            '衣柜',
+        ];
+        console.log(icons);
+
+        //将icons数组的每一项自动转换为ul里面的li里面的i
+        icons.forEach(function (icon) {
+            var node = document.createElement("li");
+            node.innerHTML = '<i>' + icon + '</i>';
+            luck.appendChild(node);
+        })
+
+        var start = document.querySelector('.luck li:nth-child(5)');
+        var li = luck.querySelectorAll('li');
+
+        var bluck = 0;
+
+        var roll=[0,1,2,5,8,7,6,3];
+
+        var change = true
+
+        //start是ul里面第五个li的class，即‘开始’
+        start.onclick = function () {
+            if(change) {
+                change = false
+
+                //每次点击start都会执行此函数，此函数的作用是清除上一次抽奖之后变黑的残留
+                function potato() {
+                    for (var i = 0; i < li.length; i++) {
+                        if (i == 4) {
+                            li[i].style.backgroundColor = 'coral';
+                        } else {
+                            li[i].style.backgroundColor = 'aqua';
+                        }
+                    }
+                }
+                potato();
+
+                //旋转障眼法
+                //用无数个一次性定时器，设置每个定时器的执行时间成等差数列
+                //每个定时器内容为让上一个变回原本底色，下一个变黑
+                function potato2() {
+                    //第一轮
+                    setTimeout(function () {
+                        li[roll[0]].style.backgroundColor = 'black';
+                    },1000)
+
+                    setTimeout(function () {
+                        li[roll[1]].style.backgroundColor = 'black';
+                        li[roll[0]].style.backgroundColor = 'aqua';
+                    },1100)
+
+                    setTimeout(function () {
+                        li[roll[2]].style.backgroundColor = 'black';
+                        li[roll[1]].style.backgroundColor = 'aqua';
+                    },1200)
+
+                    setTimeout(function () {
+                        li[roll[3]].style.backgroundColor = 'black';
+                        li[roll[2]].style.backgroundColor = 'aqua';
+                    },1300)
+
+                    setTimeout(function () {
+                        li[roll[4]].style.backgroundColor = 'black';
+                        li[roll[3]].style.backgroundColor = 'aqua';
+                    },1400)
+
+                    setTimeout(function () {
+                        li[roll[5]].style.backgroundColor = 'black';
+                        li[roll[4]].style.backgroundColor = 'aqua';
+                    },1500)
+
+                    setTimeout(function () {
+                        li[roll[6]].style.backgroundColor = 'black';
+                        li[roll[5]].style.backgroundColor = 'aqua';
+                    },1600)
+
+                    setTimeout(function () {
+                        li[roll[7]].style.backgroundColor = 'black';
+                        li[roll[6]].style.backgroundColor = 'aqua';
+                    },1700)
+
+
+                    //第二轮
+                    setTimeout(function () {
+                        li[roll[0]].style.backgroundColor = 'black';
+                        li[roll[7]].style.backgroundColor = 'aqua';
+                    },1800)
+
+                    setTimeout(function () {
+                        li[roll[1]].style.backgroundColor = 'black';
+                        li[roll[0]].style.backgroundColor = 'aqua';
+                    },1900)
+
+                    setTimeout(function () {
+                        li[roll[2]].style.backgroundColor = 'black';
+                        li[roll[1]].style.backgroundColor = 'aqua';
+                    },2000)
+
+                    setTimeout(function () {
+                        li[roll[3]].style.backgroundColor = 'black';
+                        li[roll[2]].style.backgroundColor = 'aqua';
+                    },2100)
+
+                    setTimeout(function () {
+                        li[roll[4]].style.backgroundColor = 'black';
+                        li[roll[3]].style.backgroundColor = 'aqua';
+                    },2200)
+
+                    setTimeout(function () {
+                        li[roll[5]].style.backgroundColor = 'black';
+                        li[roll[4]].style.backgroundColor = 'aqua';
+                    },2300)
+
+                    setTimeout(function () {
+                        li[roll[6]].style.backgroundColor = 'black';
+                        li[roll[5]].style.backgroundColor = 'aqua';
+                    },2400)
+
+                    setTimeout(function () {
+                        li[roll[7]].style.backgroundColor = 'black';
+                        li[roll[6]].style.backgroundColor = 'aqua';
+                    },2500)
+
+
+                    //第三轮
+                    setTimeout(function () {
+                        li[roll[0]].style.backgroundColor = 'black';
+                        li[roll[7]].style.backgroundColor = 'aqua';
+                    },2600)
+
+                    setTimeout(function () {
+                        li[roll[1]].style.backgroundColor = 'black';
+                        li[roll[0]].style.backgroundColor = 'aqua';
+                    },2700)
+
+                    setTimeout(function () {
+                        li[roll[2]].style.backgroundColor = 'black';
+                        li[roll[1]].style.backgroundColor = 'aqua';
+                    },2800)
+
+                    setTimeout(function () {
+                        li[roll[3]].style.backgroundColor = 'black';
+                        li[roll[2]].style.backgroundColor = 'aqua';
+                    },2900)
+
+                    setTimeout(function () {
+                        li[roll[3]].style.backgroundColor = 'aqua';
+                        change  = true
+                    },3000)
+                }
+                potato2();
+
+
+                //下面的才是真正会抽到的奖品，上面的那一坨就真的只是为了做出黑色背景在那转圈的那个动画效果
+                //产生一个随机数，0 ≤ bluck ≤ 9(bluck ≠ 4),
+                do {
+                    bluck = Math.floor(Math.random() * li.length);
+                } while (bluck == 4);
+                console.log(bluck);
+
+                //腾讯式抽奖的精髓！！！ 
+                //将上面产生的随机数作为li的下标使他3秒后变黑，顺便将此li的html内容打印到上方提示框里
+                setTimeout(function () {
+                    li[bluck].style.backgroundColor = 'black';
+                    display.innerHTML='<span>恭喜你抽到了'+li[bluck].innerHTML+'</span>';
+                }, 3500)
+            }
+        }
+    </script>
+</body>
+</html>

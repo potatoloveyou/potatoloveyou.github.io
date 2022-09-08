@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .background{
+            height: 100vh;
+            width: 100%;
+            width: 400px;
+            /* background-color: red; */
+            margin: 0 auto;
+            position: relative;
+        }
+        .background .main{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 600px;
+            border: 1px solid red;
+        }
+        .background .over{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 600px;
+            background-color: rgba(193, 28, 28, 0.575);
+            display: none;
+        }
+        .background .main i{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+        .background .main i.played{
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="background">
+        <div class="main"></div>
+        <div class="over">over</div>
+    </div>
+
+
+    <script>
+        var mainEl = document.querySelector('.background .main');
+        var overEl = document.querySelector(".background .over");
+
+        var dots = [];
+        var score = 0;
+        var speed = 0.04;
+
+        function Dot(y) {
+            this.x = Math.floor(Math.random() * 4);
+            this.y = y;
+
+            //创建新的i
+            this.node = document.createElement("i");
+
+            this.updateView();
+
+            //将创建出来的i追加到mainEl里面
+            mainEl.appendChild(this.node);
+
+            var _this=this;
+            this.node.onclick=function(){
+
+                var firstUnPlayed=dots.filter(function (dot) {
+                    return !dot.played;
+                })[0];
+
+
+                if (this.isSameNode(firstUnPlayed.node)) {
+                    _this.node.classList.add('played');
+                    _this.played=true
+                }
+
+
+            }
+
+
+        }
+
+        Dot.prototype.move = function () {
+            this.y += 0.01;
+        };
+
+        Dot.prototype.updateView = function () {
+            this.node.style.left = this.x * 100 + 'px';
+            this.node.style.top = this.y * 100 + 'px';
+        }
+
+        function init() {
+            //开始生成四个
+            for (var i = 4; i > 0; i--) {
+                var d = new Dot(i - 1);
+                dots.push(d);
+            }
+        }
+        init();
+
+
+        // mainEl.onclick = function () {
+        //     clearInterval(id);
+        //     overEl.style.display="block";
+        // };
+
+
+        //游戏主体
+        var id=setInterval(function () {
+
+            //每一帧移动一下所有小点
+            dots.forEach(function (dot) {
+                dot.move();
+                dot.updateView();
+            });
+
+            // 判断最后一个小点是不是已经完全出现、
+            // 生成后面一个
+            if (dots[dots.length - 1].y >= 0) {
+                var d = new Dot(-1);
+                dots.push(d);
+            }
+
+            // 判断所有已经点击的 是否超出视口范围 y
+            var firstUnPlayed = dots.filter(function (dot) {
+                return !dot.played;
+            })[0];
+            if (firstUnPlayed&&(firstUnPlayed.y+1)*100>=600) {
+                clearInterval(id);
+                overEl.style.display='block';
+            }
+
+            // 结束游戏
+            var firstPlayed=dots.filter(function (dotr) {
+                return!dot.played;
+            })[0];
+            if (firstPlayed&&firstPlayed.y*100>600) {
+                mainEl.removeChild(firstPlayed.node);
+                dots.splice(dots.indexOf(firstPlayed), 1);
+            }
+
+
+        }, 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

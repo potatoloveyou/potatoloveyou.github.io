@@ -1,0 +1,476 @@
+.top {
+  background-color: #0c5d69;
+  color: #fff;
+}
+.top .content {
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.top .content ul {
+  overflow: hidden;
+  float: left;
+}
+.top .content ul li {
+  float: left;
+  line-height: 2em;
+  margin-right: 35px;
+}
+.top .content ul li i {
+  margin-right: 5px;
+}
+.top .content .account {
+  float: right;
+}
+.top .content .account i {
+  width: 30px;
+  height: 30px;
+  line-height: 2em;
+}
+.nav {
+  padding: 30px 0;
+}
+.nav .content {
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.nav .content h2 {
+  float: left;
+}
+.nav .content h2 img {
+  margin-top: 35px;
+}
+.nav .content .g {
+  float: right;
+  overflow: hidden;
+  width: 75%;
+}
+.nav .content .g .g-g {
+  float: left;
+  padding: 30px 0;
+}
+.nav .content .g .g-g a {
+  font-weight: 700;
+  font-size: 15px;
+  color: black;
+  box-sizing: border-box;
+  padding-right: 37px;
+  text-decoration: none;
+}
+.nav .content .g .g-gg {
+  float: right;
+  margin: 10px 0;
+  padding: 20px;
+  border: 1px solid #13a2b7;
+  border-radius: 10px;
+}
+.nav .content .g .g-gg a {
+  color: black;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+.a {
+  background-image: url(img/hero-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding: 145px 0;
+  background-size: cover;
+}
+.a .a-core {
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.a .a-core .a-left {
+  float: left;
+  width: 60%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+.a .a-core .a-left .above {
+  color: #13a2b7;
+  font-weight: 600;
+}
+.a .a-core .a-left .middle {
+  font-weight: 700;
+  font-size: 48px;
+  padding: 10px 0;
+  margin-bottom: 35px;
+}
+.a .a-core .a-left .below a {
+  padding: 15px 20px;
+  background-color: #13a2b7;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+}
+.reason {
+  padding: 50px 0;
+}
+.reason .b {
+  margin: 0 auto;
+  width: 1000px;
+}
+.reason .b .b-above {
+  text-align: center;
+}
+.reason .b .b-above p {
+  font-size: 15px;
+}
+.reason .b .b-above h3 {
+  font-size: 30px;
+  font-weight: 900;
+}
+.reason .b .b-below {
+  overflow: hidden;
+}
+.reason .b .b-below .card {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.reason .b .b-below .card img {
+  margin: 20px 0;
+}
+.reason .b .b-below .card h5 {
+  font-size: 20px;
+  font-weight: 650;
+  padding-bottom: 20px ;
+}
+.reason .b .b-below .card p {
+  font-size: 14px;
+}
+.servier {
+  background-image: url(img/services-bg.jpg);
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  background-position: center top;
+  background-size: cover;
+}
+.servier .c {
+  width: 1000px;
+  margin: 0 auto;
+}
+.servier .c .c-above {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.servier .c .c-above .above-left {
+  float: left;
+  margin: 10px 0 0 15px;
+}
+.servier .c .c-above .above-left p {
+  color: #13a2b7;
+  font-size: 17px;
+}
+.servier .c .c-above .above-left h3 {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 700;
+}
+.servier .c .c-above .above-right {
+  float: right;
+  border: 1px solid #13a2b7;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 2em;
+  margin: 15px 15px 0 0;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.servier .c .c-below {
+  overflow: hidden;
+}
+.servier .c .c-below .below-card {
+  float: left;
+  width: 410px;
+  background-color: white;
+  padding: 30px;
+  margin: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.servier .c .c-below .below-card img {
+  margin: 15px 20px 0 0;
+  float: left;
+  width: 60px;
+}
+.servier .c .c-below .below-card .below-info {
+  float: right;
+  width: 330px;
+}
+.servier .c .c-below .below-card .below-info h5 {
+  font-size: 20px;
+  font-weight: 650;
+  padding-bottom: 20px;
+}
+.servier .c .c-below .below-card .below-info p {
+  font-size: 14px;
+  line-height: 2em;
+}
+.doctors {
+  padding: 20px 0;
+  overflow: hidden;
+}
+.doctors .d {
+  margin: 0 auto;
+  width: 1000px;
+}
+.doctors .d .d-above {
+  text-align: center;
+}
+.doctors .d .d-above p {
+  color: #888888;
+}
+.doctors .d .d-above h3 {
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 8px;
+}
+.doctors .d .d-below {
+  overflow: hidden;
+  padding: 40px 0;
+}
+.doctors .d .d-below .card {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+.doctors .d .d-below .card img {
+  border-radius: 50%;
+  border: 10px solid #cfc8c8;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+.doctors .d .d-below .card h5 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.doctors .d .d-below .card p {
+  color: #13a2b7;
+  margin-bottom: 15px;
+}
+.doctors .d .d-below .card .account i {
+  width: 30px;
+  height: 30px;
+  line-height: 2em;
+}
+.process {
+  height: 620px;
+  overflow: hidden;
+}
+.process .f-left {
+  width: 75%;
+  float: left;
+  overflow: hidden;
+}
+.process .f-left .card {
+  float: left;
+  width: 33.33%;
+}
+.process .f-left .card .picture {
+  height: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+.process .f-left .card:nth-child(1) .picture {
+  background-image: url("img/gallery-1.jpg");
+}
+.process .f-left .card:nth-child(2) .picture {
+  background-image: url("img/gallery-2.jpg");
+}
+.process .f-left .card:nth-child(3) .picture {
+  background-image: url("img/gallery-3.jpg");
+}
+.process .f-left .card:nth-child(4) .picture {
+  background-image: url("img/gallery-5.jpg");
+}
+.process .f-left .card:nth-child(5) .picture {
+  background-image: url("img/gallery-6.jpg");
+}
+.process .f-left .card:nth-child(6) .picture {
+  background-image: url("img/gallery-7.jpg");
+}
+.process .f-right {
+  width: 25%;
+  height: 620px;
+  float: right;
+  background-image: url(img/gallery-4.jpg);
+  background-size: cover;
+  background-position: center top;
+}
+.news {
+  padding: 50px 0;
+}
+.news .g {
+  margin: 0 auto;
+  width: 1000px;
+}
+.news .g .g-above {
+  overflow: hidden;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.news .g .g-above .above-left {
+  float: left;
+}
+.news .g .g-above .above-left p {
+  font-weight: 500;
+  font-size: 15px;
+}
+.news .g .g-above .above-left h3 {
+  font-weight: 700;
+  font-size: 35px;
+}
+.news .g .g-above .above-right {
+  float: right;
+  border: 1px solid #13a2b7;
+  background-color: transparent;
+  padding: 10px 25px;
+  font-size: 2em;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.news .g .g-below {
+  overflow: hidden;
+}
+.news .g .g-below .shadow {
+  width: 33.33%;
+  float: left;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.news .g .g-below .shadow .card {
+  padding: 15px;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+.news .g .g-below .shadow .card:hover {
+  box-shadow: 0 0 15px 0 #807c7c;
+}
+.news .g .g-below .shadow .card:hover a {
+  text-decoration: underline;
+}
+.news .g .g-below .shadow .card a {
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+.news .g .g-below .shadow .card p {
+  color: #666666;
+  font-size: 15px;
+  margin: 10px 0;
+}
+.news .g .g-below .shadow .card .author {
+  line-height: 30px;
+  color: #888;
+}
+.news .g .g-below .shadow .card .author img {
+  border-radius: 50%;
+  vertical-align: middle;
+  padding: 0 5px 0 0;
+}
+.news .g .g-below .shadow .card .author .name {
+  vertical-align: middle;
+}
+.news .g .g-below .shadow .card .author .spot {
+  font-weight: 700;
+  vertical-align: middle;
+  font-size: 20px;
+}
+.news .g .g-below .shadow .card .author .time {
+  vertical-align: middle;
+}
+.footer {
+  background-color: #121c1d;
+  color: #fff;
+}
+.footer .h {
+  width: 1000px;
+  margin: 0 auto;
+}
+.footer .h .h-above {
+  overflow: hidden;
+  padding: 30px 0;
+  border-bottom: 1px solid #373636;
+}
+.footer .h .h-above img {
+  float: left;
+  margin-top: 13px;
+}
+.footer .h .h-above .account {
+  float: right;
+  overflow: hidden;
+}
+.footer .h .h-above .account li {
+  float: right ;
+  width: 50px;
+  height: 50px;
+  background-color: #7b7979;
+  margin-left: 10px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+.footer .h .h-middle {
+  padding: 30px 0;
+  overflow: hidden;
+}
+.footer .h .h-middle .card {
+  float: left;
+  overflow: hidden;
+  line-height: 2em;
+}
+.footer .h .h-middle .card .content {
+  float: left;
+  margin-right: 75px;
+}
+.footer .h .h-middle .card .content h5 {
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+.footer .h .h-middle .card .content .sumenu {
+  font-size: 5px;
+}
+.footer .h .h-middle .card .content .contact {
+  margin-top: 30px;
+}
+.footer .h .h-middle .card .content .contact li {
+  line-height: 2em;
+  margin-bottom: 30px;
+  font-size: 5px;
+}
+.footer .h .h-middle .card .content .contact li i {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #13a2b7;
+}
+.footer .h .h-middle .map {
+  margin-top: 30px;
+  float: right;
+  width: 300px;
+  height: 200px;
+  background-color: blueviolet;
+}
+.footer .h .h-below {
+  overflow: hidden;
+  line-height: 35px;
+}
+.footer .h .h-below .below-left {
+  float: left;
+  font-size: 5px;
+}
+.footer .h .h-below .below-right {
+  float: right;
+  font-size: 5px;
+}
+/*# sourceMappingURL=./whole.css.map */

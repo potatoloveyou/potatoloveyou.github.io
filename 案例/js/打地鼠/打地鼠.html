@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./my-minireset.css">
+    <style>
+        body{
+            background-color: aqua;
+        }
+        div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url(./1.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <script>
+        
+        var sectionEl=document.querySelector('section');
+
+        var timer=setInterval(function () {
+            var cats = document.createElement("div");
+            var a = (Math.random() * 50) + 50 ;
+            cats.style.width = a + "px";
+
+            var bigWidth=window.innerWidth - a;
+            var bigHeight=window.innerHeight - a;
+
+            cats.style.left=Math.floor(Math.random()*bigWidth) +'px';
+            cats.style.top=Math.floor(Math.random()*bigHeight) +'px';
+            
+            sectionEl.appendChild(cats);
+
+        }, 500);
+
+        function fn(e) {
+            if (e.target.nodeName=='DIV') {
+                e.target.remove();
+            }else{
+                alert("diannimei")
+                clearInterval(timer);
+                window.removeEventListener('click',fn)
+            }
+        }
+        window.addEventListener('click',fn)
+
+
+    </script>
+
+
+
+</body>
+</html>

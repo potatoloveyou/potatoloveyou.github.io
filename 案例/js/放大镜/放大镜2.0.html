@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .small {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .small img {
+            width: 100%;
+            display: block;
+        }
+
+        .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 255, 0.5);
+            z-index: 999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            background-image: url(./1.jpg);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="small">
+        <img src="./1.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <!-- <img src="./1.jpg" alt=""> -->
+    </div>
+
+
+    <script>
+        // 设置需要放大的背景图的放大倍数
+        var level = 3;
+        var smallEl = document.getElementsByClassName('small')[0];
+        console.log(smallEl);
+        var maskEl = smallEl.getElementsByClassName("mask")[0];
+        var bigEl = document.getElementsByClassName('big')[0];
+
+        // 根据放大倍数设置背景图的大小
+        bigEl.style['background-size'] = level * 100 + '%';
+
+        // 获取放大图的宽高
+        var bigWidth = bigEl.offsetWidth;
+        // console.log(bigWidth);
+        var bigHeight = bigEl.offsetHeight;
+
+        // 获取缩略图的宽高
+        var samllWidth = smallEl.offsetWidth;
+        var samllHeight = smallEl.offsetHeight;
+
+        //   计算mask的宽度
+        var maskWidth = samllWidth / level;
+        var maskHeight = samllHeight / level;
+        // 设置mask 的宽度
+        maskEl.style.width = maskWidth + "px";
+        maskEl.style.height = maskHeight + "px";
+
+        var Left = smallEl.offsetLeft;
+        var Top = smallEl.offsetTop;
+        // console.log(Left,Top);
+
+        smallEl.onmousemove = function () {
+            console.log(event.pageX - Left, event.pageY - Top);
+            // console.log(event.pageX, event.pageY);
+
+            var mx = event.pageX - Left;
+            var my = event.pageY - Top;
+            // var mx = event.pageX;
+            // var my = event.pageY;
+
+            // 遮罩的左上角的坐标
+            var maskX = mx - maskWidth / 2;
+            var maskY = my - maskHeight / 2;
+            // console.log(maskX);
+            // console.log(maskY);
+
+            // 限定遮罩层移动的范围
+            if (maskX < 0) {
+                maskX = 0;
+            }
+            if (maskX > samllWidth - maskWidth) {
+                maskX = samllWidth - maskWidth;
+            }
+            if (maskY < 0) {
+                maskY = 0;
+            }
+            if (maskY > samllHeight - maskHeight) {
+                maskY = samllHeight - maskHeight;
+            }
+
+            // 遮罩层跟着鼠标走
+            maskEl.style.left = maskX + "px";
+            maskEl.style.top = maskY + "px";
+
+            bigEl.style["background-position"] =
+                -(bigWidth / maskWidth) * maskX + "px " + -(bigHeight / maskHeight) * maskY + "px";
+        };
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

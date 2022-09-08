@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 0;
+        }
+
+        .wrap {
+            width: 400px;
+            height: 230px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .wrap .wisper {
+            width: 600%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: -400px;
+        }
+
+        .wrap .wisper li {
+            width: 400px;
+            height: 100%;
+            float: left;
+        }
+
+        /* .wrap .wisper li a {} */
+
+        .wrap .wisper li a img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap ol {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            bottom: 0;
+            left: 0;
+            justify-content: center;
+        }
+
+        .wrap ol li {
+            width: 15px;
+            height: 15px;
+            box-sizing: border-box;
+            /* background-color: red; */
+            border-radius: 50%;
+            margin: 10px 20px;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+
+        .wrap span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 40px;
+            /* background-color: #fff; */
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        .wrap span:nth-of-type(1) {
+            top: 95px;
+            left: 5px;
+        }
+
+        .wrap span:nth-of-type(2) {
+            top: 95px;
+            right: 5px;
+        }
+
+        .wrap ol li.active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="wisper">
+            <li><a href="javaScript:;"><img src="./img/1.jpg"></a></li>
+            <li><a href="javaScript:;"><img src="./img/2.jpg"></a></li>
+            <li><a href="javaScript:;"><img src="./img/3.jpg"></a></li>
+            <li><a href="javaScript:;"><img src="./img/4.jpg"></a></li>
+        </ul>
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <span>&lt;</span>
+        <span>&gt;</span>
+    </div>
+    <script>
+        $(function () {
+            var timer = null;
+            var num = $(".wisper li").length;
+            var picWidth = $(".wisper li").eq(0).width();
+            var flag = true;
+            // console.log(num);
+            // console.log(picWidth);
+            var index = 1;
+            $(".wisper li").eq(0).clone().appendTo('.wisper');
+            $(".wisper li").eq(3).clone().prependTo('.wisper');
+            $(".wrap").hover(function () {
+                $("span").css("display","block");
+                clearInterval(timer);
+            }, function () {
+                $("span").css("display","none");
+                show();
+            });
+            function show() {
+                timer = setInterval(function () {
+                    index++;
+                    changeImg();
+                    changeDot()
+                }, 1500)
+            }
+            show();
+            function changeImg() {
+                var changeWidth = -index * picWidth;
+                $(".wisper").animate({ left: changeWidth }, 500, function () {
+                    return flag = true;
+                });
+                if (index > num) {
+                    index = 1;
+                    $(".wisper").animate({ left: -index * picWidth }, 0);
+                }
+                if (index < 1) {
+                    index = 4;
+                    $(".wisper").animate({ left: -index * picWidth }, 0);
+                }
+            }
+            function changeDot() {
+                $("ol li").eq(index - 1).addClass("active").siblings().removeClass("active");
+            }
+            $("ol li").click(function () {
+                index = $(this).index() + 1;
+                changeImg();
+                changeDot();
+            })
+            $("span").eq(0).click(function () {
+                if (flag) {
+                    flag = false;
+                    index--;
+                    changeImg();
+                    changeDot();
+                }
+            })
+            $("span").eq(1).click(function () {
+                if (flag) {
+                    flag = false;
+                    index++;
+                    changeImg();
+                    changeDot();
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

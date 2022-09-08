@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 800px;
+            height: 100%;
+            margin: 0 auto;
+            padding-top: 160px;
+        }
+        .box .choose{
+            display: flex;
+            margin: 30px 0;
+            justify-content: center;
+        }
+        .box .choose input{
+            display: block;
+            width: 300px;
+            height: 50px;
+            margin-right: 30px;
+            border-radius: 5PX;
+            border: 3px solid #e5b2bf;
+            font-size: 16px;
+            padding: 0 20px;
+        }
+        .box .choose button{
+            width: 80px;
+            border: 0;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+        .box .choose button:hover{
+            background: #e5b2bf;
+        }
+        .box .countdown{
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .box .countdown li{
+            color: white;
+            width: 130px;
+            height: 130px;
+            background: pink;
+            border-radius: 20px;
+            line-height: 130px;
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="choose">
+            <input type="datetime-local"/>
+            <button>CONFIRM</button>
+        </div>
+        <ul class="countdown">
+            <li>00</li>天
+            <li>00</li>时
+            <li>00</li>分
+            <li>00</li>秒
+        </ul>
+    </div>
+
+    <script>
+        var inputValue = document.querySelector(".choose").getElementsByTagName("input")[0];
+        var btn = document.querySelector(".choose").getElementsByTagName("button")[0];
+
+        
+        function zerofill(num){
+            return num > 9 ? num : "0" + num;
+        }
+
+        btn.onclick = function(){
+            if(inputValue.value){
+                var timer=null;
+                if(timer == null){
+                    timer = window.setInterval(function(){
+                        time();
+                    },1000)
+                }
+
+            }
+
+        }
+
+        function time(){
+            var currentDate = new Date();
+            // var futureDate = new Date("2022-9-1 00:00:00");
+            var futureDate = new Date(inputValue.value);
+            var d = futureDate - currentDate;
+            if(d <= 0){
+                lis[0].innerHTML = 00;
+                lis[1].innerHTML = 00;
+                lis[2].innerHTML = 00;
+                lis[3].innerHTML = 00;
+            }else{
+                var day = zerofill( parseInt( d/(1000*60*60*24 )) );
+                var hours = zerofill( parseInt( d/(1000*60*60)%24 ) );
+                var mins = zerofill( parseInt( d/(1000*60)%60 ) );
+                var secs = zerofill( parseInt( d/(1000)%60 ) );
+    
+                var lis = document.querySelectorAll(".countdown li")
+        
+                lis[0].innerHTML = day;
+                lis[1].innerHTML = hours;
+                lis[2].innerHTML = mins;
+                lis[3].innerHTML = secs;
+
+            }
+            
+        }
+        
+        
+    </script>
+</body>
+</html>

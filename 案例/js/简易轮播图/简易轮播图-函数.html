@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            background-color: red;
+            position: relative;
+        }
+    
+        .swiper .list {
+            position: relative;
+        }
+    
+        .swiper .list img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            transition: all 0.3s;
+        }
+    
+        .swiper .list img:first-child {
+            position: relative;
+        }
+    
+        .swiper ul.dots {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+    
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 9;
+        }
+    
+        .swiper ul.dots li {
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+    
+        .swiper .control {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="swiper" class="swiper">
+
+        <div class="list">
+            <img src="./normal1.jpg" alt="" />
+            <img src="./normal2.jpg" alt="" />
+            <img src="./normal3.jpg" alt="" />
+            <img src="./normal4.jpg" alt="" />
+        </div>
+
+        <ul class="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    
+        <div class="control">
+            <button>prev</button>
+            <button>next</button>
+        </div>
+        
+    </div>
+
+    <script>
+        var swiperEl = document.getElementById('swiper');
+        var imgs=swiperEl.getElementsByClassName('list')[0].getElementsByTagName('img');
+        var dots=swiperEl.getElementsByClassName('dots')[0].getElementsByTagName('li');
+
+        var prevBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[0];
+        var nextBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[1];
+
+        var current;
+
+
+        // 根据索引显示第几张图片 高亮第几个dots
+        function showItem(n) {
+            for (var i = 0; i < imgs.length; i++) {
+                if (i===n) {
+                    imgs[i].style.opacity="1";
+                    dots[i].style.backgroundColor = "red";
+                }else{
+                    imgs[i].style.opacity="0";
+                    dots[i].style.backgroundColor = "orange";
+                }
+            }
+            return n;
+        }
+
+
+        current=showItem(0);
+
+
+        // 为所有dots添加事件
+        for (var i = 0; i < dots.length; i++) {
+
+            // 添加标记 index
+            dots[i].title=i;
+            // console.log(dots[i]);
+
+            //添加点击事件
+            dots[i].onclick=function(){
+                current = showItem(Number(this.title));
+                // 声明一个current让他=this.title产生出来的序号（这个序号为字符串），所以前面加了个nuber让这个字符串转换为数字
+
+            }
+        }
+
+
+
+        // nextBtn.onclick=function(){
+        //     current++;
+        //     if (current >=imgs.length) {
+        //         current = 0;
+        //     }
+        //     showItem(current);
+        // }
+
+        // 原版
+
+        // nextBtn.onclick = function () {
+        //     // var x = current >= imgs.length ? (current = 0) : ++current;
+        //     // console.log(x);
+        //     // showItem(x);
+        //     var x = ++current >= imgs.length ? (current = 0) : current;
+        //     console.log(x);
+        //     showItem(x);
+        // };
+
+        // 浓缩版
+
+        function aaa(){
+            current++;
+            if (current >=imgs.length) {
+                current = 0;
+            }
+            showItem(current);
+        }
+        nextBtn.onclick = aaa;
+
+        // 封装版
+
+        function bbb() {
+            current--;
+            if (current < 0) {
+                current = imgs.length - 1;
+            }
+            showItem(current);
+        };
+        prevBtn.onclick =bbb;
+
+
+    </script>
+
+    <script>
+        // 定时器
+
+        // setTimeout(回调函数, timeout);
+        // setTimeout(
+        //     function(){
+
+        //     },3000
+        // )
+        // // 时间到了运行一次
+
+        
+        setInterval(
+            function(){
+                aaa();
+            },3000
+        )
+        // 间隔多久运行一次
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

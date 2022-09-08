@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .background{
+            background-color: aqua;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .background .core{
+            width: 600px;
+            height: 600px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            
+        }
+        .background .core div{
+            background-color: pink;
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            line-height: 120px;
+            color: #fff;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="background">
+        <div class="core">
+            <div class="days"></div>
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+    </section>
+
+    <script>
+        var timeBox = document.getElementsByClassName('core')[0];
+        var daysBox=timeBox.getElementsByClassName('days')[0];
+        var hourBox=timeBox.getElementsByClassName('hour')[0];
+        var minuteBox=timeBox.getElementsByClassName('minute')[0];
+        var secondBox=timeBox.getElementsByClassName('second')[0];
+
+        var d = new Date("2024-9-1 00:00:00");
+        console.log(d);
+
+        setInterval(function() {
+            // 现在的时间戳
+            var nowTime = Date.now();
+            // 时间戳的差值 
+            var countTimer = d - nowTime;
+            // console.log(countTimer);
+            //计算天数
+            var days = parseInt( countTimer / 1000 / 60 / 60 / 24)
+            // console.log(days);
+            if (days<10) {
+                days="0"+days;
+            }
+            //计算小时
+            var hour =  parseInt(( countTimer / 1000 / 60 / 60 ) % 24)
+            // console.log(hour);
+            if (hour<10) {
+                hour="0"+hour;
+            }
+            //计算分钟
+            var minute = parseInt( (countTimer / 1000 / 60 )  % 60 )
+            // console.log(minute);
+            if (minute<10) {
+                minute="0"+minute;
+            }
+            //计算秒
+            var second = parseInt(( countTimer / 1000 ) % 60 )
+            // console.log(second);
+            if (second<10) {
+                second="0"+second;
+            }
+                daysBox.innerText =days
+                hourBox.innerText =hour
+                minuteBox.innerText =minute
+                secondBox.innerText =second
+        },1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

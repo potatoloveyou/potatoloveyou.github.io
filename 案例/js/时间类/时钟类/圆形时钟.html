@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="big">
+        <div class="small">small</div>
+    </div> -->
+
+    <!-- <div class="box"></div>
+    <style>
+        .box {
+            width: 10px;
+            height: 100px;
+            background-color: lightblue;
+            transition: all 0.3s;
+            margin: 100px;
+
+            /* transform-origin: top left; */
+            transform-origin: center 200%;
+            /* 修改变形基准点 */
+        }
+
+        .box:hover {
+            /* transform: scale(2); */
+
+            transform: rotate(45deg);
+        }
+    </style> -->
+
+    <div class="stage">
+        <div class="tail">
+            <!-- <i class="b"></i>
+            <i class="s"></i> -->
+        </div>
+        <div class="needle">
+            <div class="shizhen"></div>
+            <div class="fenzhen"></div>
+            <div class="miaozhen"></div>
+        </div>
+    </div>
+    <style>
+        .stage {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .stage .tail {
+            /* display: flex; */
+            position: relative;
+        }
+
+        .stage .tail i {
+            display: block;
+            transform-origin: center 250px;
+        }
+
+        .stage .tail i.b {
+            width: 8px;
+            height: 40px;
+            background-color: lightcoral;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -4px;
+
+            /* transform: rotate(45deg); */
+        }
+
+        .stage .tail i.s {
+            width: 4px;
+            height: 20px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -2px;
+
+            /* transform: rotate(45deg); */
+        }
+
+        .needle {
+            position: relative;
+            /* top: 25%; */
+            /* left: 49%; */
+        }
+
+        .needle .shizhen {
+            width: 10px;
+            height: 150px;
+            background-color: palevioletred;
+            position: absolute;
+            left: 245px;
+            top: 120px;
+            transform-origin: center 130px;
+            /* transform: rotate(0deg); */
+            z-index: 2;
+            /* border-radius: 20px 20px 0px 0; */
+            border-radius: 100% 100% 0 0;
+        }
+
+        .needle .fenzhen {
+            width: 8px;
+            height: 200px;
+            background-color: purple;
+            position: absolute;
+            top: 70px;
+            left: 246px;
+            /* transition: all 3s; */
+            /* transform: rotate(45deg); */
+            transform-origin: center 180px;
+            /* border-radius: 10px 10px 0px 0; */
+            border-radius: 100% 100% 0 0;
+        }
+
+        .needle .miaozhen {
+            width: 3px;
+            height: 250px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 249px;
+            /* transition: all 3s; */
+            /* transform: rotate(60deg); */
+            transform-origin: center 200px;
+            z-index: 1;
+            border-radius: 100% 100% 0 0;
+        }
+    </style>
+
+    <script>
+        for (let i = 0; i < 12 * 5; i++) {
+            var node = document.createElement("i");
+            if (i % 5 === 0) {
+                node.className = "b";
+            } else {
+                node.className = "s";
+            }
+
+            node.style.transform = "rotate(" + i * (360 / (12 * 5)) + "deg)";
+            document.querySelector(".tail").appendChild(node);
+        }
+
+        setInterval(function () {
+            var shizhenEl = document.querySelectorAll(".needle .shizhen")[0];
+            var fenzhenEl = document.querySelectorAll(".needle .fenzhen")[0];
+            var miaozhenEl = document.querySelectorAll(".needle .miaozhen")[0];
+
+            var now = new Date();
+
+            // var s = parseInt (now / 1000) ;
+
+            // var h = parseInt (s % (24 * 60 * 60) / (60 * 60));
+            // var h = Number(now.getHours());
+            // var m = Number(now.getMinutes());
+            // var s = Number(now.getSeconds());
+            // Number 是多余的
+
+            var h = now.getHours();
+            var m = now.getMinutes();
+            var s = now.getSeconds();
+
+            // shizhenEl.style.transform = "rotate(" + h * (360 / (12 * 5)) + "deg)";
+            // fenzhenEl.style.transform = "rotate(" + m * (360 / (12 * 5)) + "deg)";
+            // miaozhenEl.style.transform = "rotate(" + s * (360 / (12 * 5)) + "deg)";
+
+            shizhenEl.style.transform = "rotate(" + (h * 30 + (m * (360 / (12 * 5) / 12))) + "deg)";
+            fenzhenEl.style.transform = "rotate(" + (m * (360 / (12 * 5)) + s * (360 / (12 * 5)/60)) + "deg)";
+            miaozhenEl.style.transform = "rotate(" + (s * (360 / (12 * 5))) + "deg)";
+        }, 1000);
+    </script>
+</body>
+
+</html>

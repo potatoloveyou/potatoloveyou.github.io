@@ -1,0 +1,317 @@
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.clear::before {
+  content: "";
+  display: block;
+  clear: both;
+}
+.a .center {
+  width: 400px;
+  margin: 0 auto;
+}
+.a .center .center-search {
+  width: 376px;
+  border: 1px solid blue;
+  border-radius: 50px;
+  padding-left: 10px;
+  margin: 10px auto;
+  color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+.a .center .center-search input {
+  width: 94%;
+  line-height: 2em;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+.a .center .center-function {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.a .center .center-function .card {
+  width: 74.5px;
+  height: 58px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 1px;
+}
+.a .center .center-function .card img {
+  width: 28x;
+  height: 28px;
+}
+.a .center .center-function .card h5 {
+  font-size: 12px;
+}
+.a .center .center-function .card:nth-child(1) {
+  background-color: #fa6054;
+  border-radius: 5px 0 0 0;
+  color: #fff;
+}
+.a .center .center-function .card:nth-child(2) {
+  background-color: #18b8ee;
+  color: #fff;
+}
+.a .center .center-function .card:nth-child(3) {
+  background-color: #5f85ff;
+  color: #fff;
+}
+.a .center .center-function .card:nth-child(4) {
+  background-color: #36c7b5;
+  color: #fff;
+}
+.a .center .center-function .card:nth-child(5) {
+  background-color: #faa754;
+  border-radius: 0 5px 0 0;
+  color: #fff;
+}
+.a .center .center-function .card:nth-child(6) {
+  background-color: #fff5f1;
+}
+.a .center .center-function .card:nth-child(7) {
+  background-color: #eff9ff;
+}
+.a .center .center-function .card:nth-child(8) {
+  background-color: #f2f5ff;
+}
+.a .center .center-function .card:nth-child(9) {
+  background-color: #ecfcf8;
+}
+.a .center .center-function .card:nth-child(10) {
+  background-color: #fff9f2;
+}
+.a .center .center-function .card:nth-child(11) {
+  background-color: #fff5f1;
+  border-radius: 0 0 0 5px;
+}
+.a .center .center-function .card:nth-child(12) {
+  background-color: #eff9ff;
+}
+.a .center .center-function .card:nth-child(13) {
+  background-color: #f2f5ff;
+}
+.a .center .center-function .card:nth-child(14) {
+  background-color: #ecfcf8;
+}
+.a .center .center-function .card:nth-child(15) {
+  background-color: #fff9f2;
+  border-radius: 0 0 5px 0;
+}
+.a .center .center-switch {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5px;
+}
+.a .center .center-switch .switch-a {
+  background-color: blue;
+  width: 20px;
+  height: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.a .center .center-switch .switch-b {
+  background-color: gray;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+}
+.b {
+  background-color: #f4f4f4;
+  height: 450px;
+  width: 400px;
+  margin: 0 auto;
+}
+.b .b-above {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.b .b-above .b-a-left {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+}
+.b .b-above .b-a-left .l-above {
+  display: flex;
+  justify-content: space-between;
+}
+.b .b-above .b-a-left .l-above img {
+  width: 73px;
+  height: 20px;
+}
+.b .b-above .b-a-left .l-above .l-a-r {
+  height: 16px;
+  line-height: 16px;
+  border-radius: 2px;
+  font-size: 10px;
+  background: #ffebe3;
+  color: #ff4607;
+  padding: 1px 4px;
+}
+.b .b-above .b-a-left .l-middle {
+  width: 168px;
+  height: 84px;
+  background-image: url(imgs/1659750283.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 6px;
+  position: relative;
+}
+.b .b-above .b-a-left .l-middle .l-m-above {
+  display: flex;
+  justify-content: space-between;
+}
+.b .b-above .b-a-left .l-middle .l-m-above span {
+  height: 14px;
+  line-height: 14px;
+  padding: 0 3px;
+  background: rgba(51, 51, 51, 0.8);
+  border-radius: 6px 0 6px 0;
+  font-size: 10px;
+  color: #fff;
+}
+.b .b-above .b-a-left .l-middle .l-m-above ul {
+  display: flex;
+  margin-right: 3px;
+}
+.b .b-above .b-a-left .l-middle .l-m-above ul li {
+  float: left;
+  font-size: 10px;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(128, 128, 128, 0.458);
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.b .b-above .b-a-left .l-middle .l-m-above ul li:nth-child(3) {
+  background-color: #fff;
+  width: 20px;
+  border-radius: 5px;
+}
+.b .b-above .b-a-left .l-middle h5 {
+  font-size: 11px;
+  color: #fff;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  margin: 0 2px;
+  font-weight: 700;
+}
+.b .b-above .b-a-left .l-below {
+  height: 18px;
+  line-height: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f60;
+  margin-top: 5px;
+}
+.b .b-middle {
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.b .b-middle img {
+  width: 100%;
+  padding: 0 12px 12px 12px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.b .b-below .b-b-above {
+  display: flex;
+  justify-content: center;
+}
+.b .b-below .b-b-above a {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color: black;
+  text-decoration: none;
+  margin-top: 15px;
+}
+.b .b-below .b-b-above a i {
+  margin-right: 5px;
+  color: #666;
+}
+.b .b-below .b-b-above a span {
+  font-size: 14px;
+}
+.b .b-below .b-b-middle {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.b .b-below .b-b-middle a {
+  text-decoration: none;
+  margin: 0 30px;
+  color: #666;
+  font-size: 12px;
+  line-height: 15px;
+}
+.b .b-below .b-b-below {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  color: #666;
+  font-size: 12px;
+  line-height: 15px;
+}
+.b .option {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 400px;
+  margin: 0 auto;
+}
+.b .option a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  color: #666;
+  font-size: 11px;
+  line-height: 12px;
+  text-decoration: none;
+}
+.b .option a i {
+  font-size: 25px;
+}
+.b .option a span {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 12px;
+}
+.b .option a:nth-child(1) {
+  color: blue;
+}
+.b .sign {
+  position: fixed;
+  right: 0;
+  bottom: 55px;
+}
+.b .sign img {
+  width: 76px;
+  height: 76px;
+}
+/*# sourceMappingURL=./xiecheng.css.map */

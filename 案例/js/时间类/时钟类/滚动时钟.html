@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            display: flex;
+        }
+    
+        section {
+            display: flex;
+        }
+    
+        section div {
+            width: 50px;
+            height: 100px;
+            /* border: 1px solid green; */
+            background-color: lightblue;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+    
+            /* box-shadow: 0 0 5px 0 black; */
+        }
+    
+        section div span {
+            width: 100%;
+            height: 100px;
+            background-color: lightcoral;
+            box-sizing: border-box;
+            border: 5px solid lightblue;
+    
+            flex-shrink: 0;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hh">
+            <div class="s1">
+                <span>0</span>
+            </div>
+            <div class="s2">
+                <span>0</span>
+            </div>
+        </section>
+        <section class="mm">
+            <div class="s1">
+                <span>0</span>
+            </div>
+            <div class="s2">
+                <span>0</span>
+            </div>
+        </section>
+        <section class="ss">
+            <div class="s1">
+                <span>0</span>
+            </div>
+            <div class="s2">
+                <span>0</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showNewNum(element,n) {
+            // element 是显示一个数字的盒子  .s1 或者 .s2   n是新的值
+            var firstSpanDom = element.getElementsByTagName("span")[0];
+
+            // 如果第一个span里面文字 和 需要展示 文字不同
+            if (firstSpanDom.innerText !== n) {
+                
+                //   创建新元素span
+                var newSpanDom=document.createElement('span');
+
+                //  将新的值赋值到newSpanDom
+                newSpanDom.innerText = n;
+
+                //   将新span放到 .s1  和 .s2的末尾
+                element.appendChild(newSpanDom);
+
+                //   第一个span 往上移动-100
+                firstSpanDom.style.marginTop = "-100px";
+
+                //   过渡完成之后 删除第一个span元素
+                setTimeout(function () {
+                    element.removeChild(firstSpanDom);
+                }, 300);
+            }
+        }
+
+
+
+        setInterval(function () {
+        
+            //获得当前时间
+            var now = new Date();
+            
+            // 取出当前的秒数 并且补全两位
+            var hh = String(now.getHours()).padStart(2, "0");
+            var mm = String(now.getMinutes()).padStart(2, "0");
+            var ss = String(now.getSeconds()).padStart(2, "0");
+
+            var hhDom = document.querySelector(".hh");
+            var mmDom = document.querySelector(".mm");
+            var ssDom = document.querySelector(".ss");
+
+            hhDom.querySelectorAll("div").forEach(function (element, n) {
+            // 每个盒子都显示一下新的值
+            showNewNum(element, hh[n]);
+            });
+            
+            mmDom.querySelectorAll("div").forEach(function (element, n) {
+            // 每个盒子都显示一下新的值
+            showNewNum(element, mm[n]);
+            });
+
+            ssDom.querySelectorAll("div").forEach(function (element, n) {
+            // 每个盒子都显示一下新的值
+            showNewNum(element, ss[n]);
+            });
+        }, 1000);
+
+    </script>
+</body>
+</html>

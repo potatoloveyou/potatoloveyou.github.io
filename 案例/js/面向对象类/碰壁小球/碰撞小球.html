@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stage {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            position: relative;
+        }
+    
+        .stage i {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+    
+        }
+    </style>
+</head>
+<body>
+    <div class="stage"></div>
+
+    <script>
+        var stage = document.querySelector(".stage");
+        function Dot(color, size, x, y, xSpeed, ySpeed) {
+            this.color = color;
+            this.size = size;
+            this.x = x;
+            this.y = y;
+            this.xSpeed = xSpeed;
+            this.ySpeed = ySpeed;
+        }
+
+        Dot.prototype.update = function () {
+            this.node.style.top = this.y + "px";
+            this.node.style.left = this.x + "px";
+        };
+
+        Dot.prototype.draw = function () {
+            // console.log("draw");
+            this.node = document.createElement("i");
+            this.node.style.width = this.size + "px";
+            this.node.style.height = this.size + "px";
+            this.node.style.backgroundColor = this.color;
+
+            this.update();
+            stage.appendChild(this.node);
+        };
+
+        Dot.prototype.check = function () {
+            var rightPZ = this.x + this.size > 500;
+            var leftPZ = this.x < 0;
+
+            var topPZ = this.y < 0;
+            var bottomPZ = this.y + this.size > 500;
+            if (leftPZ || rightPZ) {
+                //   this.xSpeed *= -1;
+                this.xSpeed = -this.xSpeed;
+            }
+            if (topPZ || bottomPZ) {
+                //   this.xSpeed *= -1;
+                this.ySpeed = -this.ySpeed;
+            }
+
+            // 碰到边减尺寸
+            if (leftPZ || rightPZ || topPZ || bottomPZ) {
+                this.size -= 1;
+                if (this.size <= 0) {
+                    stage.removeChild(this.node);
+
+                    dots.splice(dots.indexOf(this), 1);
+                } else {
+                    this.node.style.width = this.size + "px";
+                    this.node.style.height = this.size + "px";
+                }
+            }
+        };
+
+        Dot.prototype.move = function () {
+            this.check();
+
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+
+            this.update();
+        };
+
+        var dots = [
+            new Dot("red", 20, 100, 0, 3, 1),
+            new Dot("green", 50, 200, 100, 1, 3),
+            new Dot("blue", 10, 0, 300, 5, 5),
+        ];
+
+        dots.forEach(function (dot) {
+            dot.draw();
+        });
+        setInterval(function () {
+            dots.forEach(function (dot) {
+                dot.move();
+            });
+        }, 30);
+    </script>
+
+
+
+
+</body>
+</html>

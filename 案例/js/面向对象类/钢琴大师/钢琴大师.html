@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    
+        .stage {
+            height: 100vh;
+            width: 100%;
+            max-width: 580px;
+            /* width: 358px; */
+            background-image: url("./bg.png");
+            background-size: 100% auto;
+        }
+    
+        .stage .main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .stage .over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.423);
+            display: none;
+        }
+    
+        .stage .main i {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90px;
+            height: 90px;
+            background-image: url("./jingling.png");
+            background-position: -181px -75px;
+            background-size: 545px;
+        }
+    
+        .stage .main i.played {
+            background-image: url("./playing.png");
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    
+        .score {
+            display: flex;
+            position: relative;
+            z-index: 999;
+            justify-content: center;
+            top: 20px;
+            pointer-events: none;
+        }
+    
+        .num {
+            display: block;
+            width: 28px;
+            height: 35px;
+            /* background-color: red; */
+            background-image: url("./score.png");
+            background-size: auto 100%; 
+            background-repeat: no-repeat;
+        }
+    
+        .num0 {
+            background-position-x: 0;
+        }
+    
+        .num1 {
+            background-position-x: -28px;
+        }
+    
+        .num2 {
+            background-position-x: -56px;
+        }
+    
+        .num3 {
+            background-position-x: -84px;
+        }
+    
+        .num4 {
+            background-position-x: -112px;
+        }
+    
+        .num5 {
+            background-position-x: -140px;
+        }
+    
+        .num6 {
+            background-position-x: -168px;
+        }
+    
+        .num7 {
+            background-position-x: -196px;
+        }
+    
+        .num8 {
+            background-position-x: -224px;
+        }
+    
+        .num9 {
+            background-position-x: -252px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <section class="main"></section>
+        <section class="over">over</section>
+
+        <section class="score">
+            <i class="num num0"></i>
+        </section>
+    </div>
+
+
+
+
+
+    <script>
+        // 1.开始游戏
+        // 2.给main后面追加生成i
+        // 3.生成初始状态的i init()
+        // 4.滚动-生成新的i
+        // 5.新的i滚动到最下面-删除i
+        // 6.给i添加点击事件，更换背景
+        // 7.i触底-游戏结束-两种mainEl
+
+        var mainEl = document.querySelector(".stage .main");
+        var overEl = document.querySelector(".stage .over");
+        var scoreEl = document.querySelector(".stage .score");
+
+        var music = [
+            [
+                25, 21, 22, 23, 24, 25, 21, 21, 26, 24, 25, 26, 27, 31, 21, 21, 24, 25, 24, 23, 22, 23, 24, 23, 22, 21, 17,
+                21, 22, 23, 21, 22, 25, 21, 22, 23, 24, 25, 21, 21, 26, 24, 25, 26, 27, 31, 21, 21, 24, 25, 24, 23, 22, 23,
+                24, 23, 22, 21, 22, 23, 22, 21, 17, 21,
+            ],
+            [
+                23, 22, 21, 17, 16, 15, 16, 17, 21, 17, 16, 15, 14, 13, 14, 12, 21, 17, 21, 11, 7, 15, 12, 13, 11, 21, 17, 16,
+                17, 23, 25, 26, 24, 23, 22, 24, 24, 23, 21, 17, 16, 15, 14, 13, 12, 14, 13, 12, 11, 12, 13, 14, 15, 12, 15,
+                14, 13, 16, 15, 14, 15, 14, 13, 12, 11, 6, 16, 17, 21, 17, 16, 15, 14, 13, 12, 16, 15, 16, 15, 14, 13, 23, 22,
+                21, 22, 21, 23, 22, 24, 25, 23, 24, 25, 23, 24, 25, 15, 16, 17, 21, 22, 23, 24, 23, 21, 22, 23, 13, 14, 15,
+                16, 15, 14, 15, 13, 14, 15, 14, 16, 15, 14, 13, 12, 13, 12, 11, 12, 13, 14, 15, 16, 14, 16, 15, 16, 17, 21,
+                15, 16, 17, 21, 22, 23, 24, 25, 23, 21, 22, 23, 22, 21, 22, 17, 21, 22, 23, 22, 21, 17, 21, 16, 17, 21, 11,
+                12, 13, 14, 13, 12, 13, 21, 17, 21, 16, 21, 17, 16, 15, 14, 15, 14, 13, 14, 15, 16, 17, 11, 16, 21, 17, 21,
+                17, 16, 17, 21, 22, 21, 17, 21, 16, 17, 23, 13, 14, 13, 12, 22, 23, 22, 21, 13, 11, 16, 15, 5, 4, 5, 6, 16,
+                17, 16, 17, 5, 4, 5, 6, 16, 15, 16, 17, 17, 16, 17, 11, 21, 22, 21, 17, 7, 11, 7, 6, 16, 15, 16, 17, 7, 13,
+                12, 11, 21, 22, 24, 23, 13, 15, 23, 21, 24, 23, 24, 22, 15, 14, 15, 13, 21, 17, 21, 13, 15, 15, 16, 17, 15,
+                13, 21, 22, 23, 21, 23, 23, 22, 21, 17, 16, 16, 15, 16, 17, 21, 23, 22, 21, 23,
+            ],
+        ];
+        var puzi = music[Math.floor(Math.random() * music.length)];
+
+
+
+        var dots=[];
+        var score =0;
+        var speed = 0.04;
+
+
+        function Dot(y) {
+            //产生[0-3] 想让i的初始位置在第几格
+            this.x = Math.floor(Math.random() * 4);
+            this.y = y;
+
+            //创建新的i
+            this.node = document.createElement("i");
+            
+            //更新视图
+            this.updateView();
+
+            //将创建出来的i追加到mainEl里面
+            mainEl.appendChild(this.node);
+
+            // 使用_this保存实例对象
+            var _this=this;
+            this.node.onclick=function(){
+                // 事件处理函数内部的this 指向 dom
+
+                // 限制按顺序点击  判断点击的元素是不是 所有还没点的第一个
+                var firstUnPlayed=dots.filter(function (dot) {
+                    return !dot.played;
+                })[0];
+
+                
+                //阻止冒泡
+                event.stopPropagation();
+                
+                //判断他点的是不是第一个还没被点击的那个
+                if (this.isSameNode(firstUnPlayed.node)) {
+                    
+                    
+                    _this.node.classList.add('played');
+                    _this.played=true
+    
+                    var node=document.createElement('audio');
+                    node.src = "./music/sound_" + _this.music + ".mp3";
+                    node.play(); // 注意网络问题
+    
+                    score++;
+                    // console.log(score);
+
+                    // if (score % 10 === 0) {
+                    //     speed += 0.001;
+                    // }
+                    
+
+                    
+                    // 更新score视图
+                    scoreEl.innerHTML = "";
+                    String(score).split("").forEach(function (n) {
+                        var node = document.createElement("i");
+                        node.classList.add("num");
+                        node.classList.add("num" + n);
+                        scoreEl.appendChild(node);
+                    });
+                }
+            }
+        }
+
+
+        Dot.prototype.move = function () {
+            this.y += 0.01;
+        };
+
+        Dot.prototype.updateView = function () {
+            this.node.style.left = this.x * 90 + "px";
+            this.node.style.top = this.y * 90 + "px";
+        };
+        // var a  =new Dot(3)
+        
+
+        //   初始化
+        function init() {
+            //开始生成四个
+            for (var i = 4; i >0; i--) {
+                //这里的-1是代表减去两个i的y轴长度
+                var d = new Dot(i - 1);
+                //删掉puzi的第一项，shift会删掉数组的第一项并返回出来
+                var tmp=puzi.shift();
+                //将删掉并返回出来的这一项追加到puzi的最后面
+                puzi.push(tmp);
+                //
+                d.music = tmp;
+                
+                dots.push(d);
+            }
+        }
+        init();
+
+
+
+        mainEl.onclick = function () {
+            clearInterval(id);
+            overEl.style.display="block";
+        };
+
+
+        //   游戏主体
+        var id =setInterval(function () {
+            //每一帧移动一下所有小点
+            dots.forEach(function (dot) {
+                dot.move();
+                dot.updateView();
+            });
+
+            // 判断最后一个小点是不是已经完全出现、
+            // 生成后面一个
+            if (dots[dots.length - 1].y >= 0) {
+                // console.log(dots[dots.length - 1].y);
+                var d = new Dot(-1);
+
+                var tmp = puzi.shift();
+                puzi.push(tmp);
+                d.music = tmp;
+
+                dots.push(d);
+            }
+
+
+            //结束游戏
+            //检查第一个i的底部是否碰底边
+
+            //第一个还没有点击的dot
+            var firstUnPlayed=dots.filter(function (dot) {
+                return !dot.played;
+            })[0];
+            if (firstUnPlayed && (firstUnPlayed.y + 1) * 90 >= 640) {
+                clearInterval(id);
+                overEl.style.display = "block";
+            }
+
+
+            // 判断所有已经点击的 是否超出视口范围 y
+            var firstPlayed = dots.filter(function (dot) {
+                return dot.played;
+            })[0];
+            if (firstPlayed&&firstPlayed.y*90 > 640) {
+                // 已经点击的第一个元素 超出
+                // 删除数组删除dom
+                mainEl.removeChild(firstPlayed.node);
+                dots.splice(dots.indexOf(firstPlayed), 1);
+            }
+        }, 30);
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

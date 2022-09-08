@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .stage {
+            width: 390px;
+            height: 200px;
+            background-color: lightblue;
+            display: flex;
+        }
+    
+        .stage div {
+            width: 30px;
+            height: 100%;
+            background-size: auto 100%;
+            background-position: top center;
+    
+            transition: all 0.3s;
+        }
+    
+        .stage div:nth-child(1) {
+            background-image: url("./imgs/1.jpg");
+        }
+    
+        .stage div:nth-child(2) {
+            width: 300px;
+            background-image: url("./imgs/2.jpg");
+        }
+    
+        .stage div:nth-child(3) {
+            background-image: url("./imgs/3.jpg");
+        }
+    
+        .stage div:nth-child(4) {
+            background-image: url("./imgs/4.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <script>
+        var stage=document.getElementsByClassName('stage')[0];
+        var imgs=stage.getElementsByTagName('div');
+        console.log(imgs);
+
+        Array.prototype.slice.call(imgs);
+        // console.log(imgs);
+        
+        Array.prototype.slice.call(imgs).forEach(function (img, i) {
+            img.onclick=function () {
+                Array.prototype.slice.call(imgs).forEach(function (el, index) {
+                    if (index === i) {
+                        el.style.width = "300px";
+                    }else{
+                        el.style.width = "30px";
+                    }
+                });
+            };
+        });
+    </script>
+
+</body>
+</html>
